@@ -98,6 +98,23 @@ public class testTrabalho {
     }
     
     @Test
+    public void validaIdadeMenorQueZero(){
+        driver.get(caminhoPagina);
+        WebElement botao = driver.findElement(By.id("botao_somar"));
+        WebElement valorNome = driver.findElement(By.id("nome"));
+        WebElement valorEndereco = driver.findElement(By.id("endereco"));
+        WebElement valorSexo = driver.findElement(By.id("sexo"));
+        WebElement valorIdade = driver.findElement(By.id("idade"));
+        valorNome.sendKeys("Mateus");
+        valorEndereco.sendKeys("Clóvis");
+        valorSexo.sendKeys("m");
+        valorIdade.sendKeys("-1");
+        botao.click();
+        String resultado = driver.findElement(By.id("resultado")).getText();
+        Assert.assertEquals(resultado, "Preencha o campo idade com valores acima de 0");
+    }
+    
+    @Test
     public void validaSucessoDoCadastro(){
         driver.get(caminhoPagina);
         WebElement botao = driver.findElement(By.id("botao_somar"));
